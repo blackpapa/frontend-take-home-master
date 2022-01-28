@@ -17,6 +17,7 @@
   "author": "this-is-undefined",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.25.0",
     "bootstrap": "^5.1.3",
     "lodash": "^4.17.21",
     "react": "^16.14.0",

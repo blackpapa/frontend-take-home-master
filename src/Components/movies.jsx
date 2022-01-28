@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
+import axios from "axios";
 
 class Movies extends Component {
   state = {
@@ -26,6 +27,17 @@ class Movies extends Component {
       { path: "year", label: "Year" },
     ],
   };
+
+  componentDidMount() {
+    axios
+      .get("https://www.omdbapi.com/?apikey=320f6ab2&s=gur&p=10")
+      .then((response) =>
+        this.setState({
+          movies: response.data.Search,
+        })
+      )
+      .catch((error) => console.log("There is a error" + error));
+  }
 
   render() {
     const { movies, columns } = this.state;
