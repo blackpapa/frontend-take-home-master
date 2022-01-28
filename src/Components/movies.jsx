@@ -31,7 +31,7 @@ class Movies extends Component {
 
   componentDidMount() {
     axios
-      .get("https://www.omdbapi.com/?apikey=320f6ab2&s=gur&p=10")
+      .get("https://www.omdbapi.com/?apikey=320f6ab2&s=king&p=10")
       .then((response) =>
         this.setState({
           movies: response.data.Search,
@@ -47,7 +47,13 @@ class Movies extends Component {
       <div className="row">
         <div className="col"></div>
         <div className="col">
-          <h1>SearchBar</h1>
+          <div style={{ margin: 10, alignItems: "center" }}>
+            <label style={{ marginRight: 5 }}>Title</label>
+            <input style={{ marginRight: 5 }} />
+            <label style={{ marginRight: 5 }}>Year</label>
+            <input style={{ marginRight: 5 }} />
+            <button className="btn btn-sm btn-primary">Search</button>
+          </div>
           <MoviesTable movies={movies} columns={columns} />
         </div>
         <div className="col"></div>
