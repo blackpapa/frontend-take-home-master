@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import _ from "lodash";
+
 import axios from "axios";
+import MoviesTable from "./moviesTable";
 
 class Movies extends Component {
   state = {
@@ -46,24 +47,7 @@ class Movies extends Component {
       <div className="row">
         <div className="col"></div>
         <div className="col">
-          <table className="table">
-            <thead>
-              <tr>
-                {columns.map((column) => (
-                  <td key={column.path}>{column.label}</td>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {movies.map((movie) => (
-                <tr key={movie.imdbID}>
-                  {columns.map((column) => (
-                    <td key={column.path}>{_.get(movie, column.label)}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <MoviesTable movies={movies} columns={columns} />
         </div>
         <div className="col"></div>
       </div>
