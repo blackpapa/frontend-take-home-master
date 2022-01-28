@@ -15,6 +15,10 @@ class MoviesTable extends Component {
     return _.get(item, column.label);
   };
 
+  createKey = (id) => {
+    return id + Math.random().toString();
+  };
+
   render() {
     const { movies, columns } = this.props;
     return (
@@ -28,7 +32,7 @@ class MoviesTable extends Component {
         </thead>
         <tbody>
           {movies.map((movie) => (
-            <tr key={movie.imdbID}>
+            <tr key={this.createKey(movie.imdbID)}>
               {columns.map((column) => (
                 <td key={column.path}>{this.renderCell(movie, column)}</td>
               ))}
