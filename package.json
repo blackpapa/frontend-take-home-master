@@ -52,6 +52,7 @@
     "husky": "^7.0.1",
     "jest": "^27.1.0",
     "npm-force-resolutions": "0.0.10",
+    "react-shallow-renderer": "^16.14.1",
     "ts-jest": "^27.0.5",
     "ts-loader": "^9.2.5",
     "webpack": "^5.49.0",
