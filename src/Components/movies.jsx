@@ -27,6 +27,10 @@ class Movies extends Component {
       { path: "poster", label: "Poster" },
       { path: "year", label: "Year" },
     ],
+    searchQuery: {
+      title: "",
+      year: "",
+    },
   };
 
   componentDidMount() {
@@ -40,8 +44,14 @@ class Movies extends Component {
       .catch((error) => console.log("There is a error" + error));
   }
 
+  handleChange = (e) => {
+    const { searchQuery } = this.state;
+    searchQuery[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ searchQuery });
+  };
+
   render() {
-    const { movies, columns } = this.state;
+    const { movies, columns, searchQuery } = this.state;
 
     return (
       <div className="row">
@@ -49,9 +59,21 @@ class Movies extends Component {
         <div className="col">
           <div style={{ margin: 10, alignItems: "center" }}>
             <label style={{ marginRight: 5 }}>Title</label>
-            <input style={{ marginRight: 5 }} />
+            <input
+              type="string"
+              name="title"
+              style={{ marginRight: 5 }}
+              value={searchQuery.title}
+              onChange={this.handleChange}
+            />
             <label style={{ marginRight: 5 }}>Year</label>
-            <input style={{ marginRight: 5 }} />
+            <input
+              type="string"
+              name="year"
+              style={{ marginRight: 5 }}
+              value={searchQuery.year}
+              onChange={this.handleChange}
+            />
             <button className="btn btn-sm btn-primary">Search</button>
           </div>
           <MoviesTable movies={movies} columns={columns} />
