@@ -47,6 +47,7 @@ class Movies extends Component {
       <div className="row">
         <div className="col"></div>
         <div className="col">
+          <h1>SearchBar</h1>
           <MoviesTable movies={movies} columns={columns} />
         </div>
         <div className="col"></div>

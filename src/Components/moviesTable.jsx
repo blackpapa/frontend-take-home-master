@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import _ from "lodash";
 
 class MoviesTable extends Component {
+  renderCell = (item, column) => {
+    //Return link to the details of movies
+    if (column.content) return column.content(item);
+
+    //render image
+    if (column.path === "poster") {
+      const result = _.get(item, column.label);
+      return result === "N/A" ? result : <img src={result} height={100} />;
+    }
+
+    return _.get(item, column.label);
+  };
+
   render() {
     const { movies, columns } = this.props;
     return (
@@ -17,7 +30,7 @@ class MoviesTable extends Component {
           {movies.map((movie) => (
             <tr key={movie.imdbID}>
               {columns.map((column) => (
-                <td key={column.path}>{_.get(movie, column.label)}</td>
+                <td key={column.path}>{this.renderCell(movie, column)}</td>
               ))}
             </tr>
           ))}
