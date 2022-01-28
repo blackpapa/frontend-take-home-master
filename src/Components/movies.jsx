@@ -50,6 +50,10 @@ class Movies extends Component {
     this.setState({ searchQuery });
   };
 
+  handleSearch = () => {
+    console.log(this.state.searchQuery);
+  };
+
   render() {
     const { movies, columns, searchQuery } = this.state;
 
@@ -74,7 +78,12 @@ class Movies extends Component {
               value={searchQuery.year}
               onChange={this.handleChange}
             />
-            <button className="btn btn-sm btn-primary">Search</button>
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={this.handleSearch}
+            >
+              Search
+            </button>
           </div>
           <MoviesTable movies={movies} columns={columns} />
         </div>
