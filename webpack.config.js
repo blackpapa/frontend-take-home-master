@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.[fullhash].js",
+    publicPath: "/",
   },
   mode: process.env.NODE_ENV || "development",
   resolve: {
@@ -18,6 +19,7 @@ module.exports = {
     contentBase: path.join(__dirname, "src"),
     hot: true,
     port: 3000,
+    historyApiFallback: true,
   },
   module: {
     rules: [
