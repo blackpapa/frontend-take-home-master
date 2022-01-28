@@ -43,24 +43,30 @@ class Movies extends Component {
     const { movies, columns } = this.state;
 
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            {columns.map((column) => (
-              <td key={column.path}>{column.label}</td>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {movies.map((movie) => (
-            <tr key={movie.imdbID}>
-              {columns.map((column) => (
-                <td key={column.path}>{_.get(movie, column.label)}</td>
+      <div className="row">
+        <div className="col"></div>
+        <div className="col">
+          <table className="table">
+            <thead>
+              <tr>
+                {columns.map((column) => (
+                  <td key={column.path}>{column.label}</td>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {movies.map((movie) => (
+                <tr key={movie.imdbID}>
+                  {columns.map((column) => (
+                    <td key={column.path}>{_.get(movie, column.label)}</td>
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+        <div className="col"></div>
+      </div>
     );
   }
 }
