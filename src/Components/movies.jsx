@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
-import axios from "axios";
 import MoviesTable from "./moviesTable";
+import http from "../Services/httpService";
 
 const apiEndPoint = "http://www.omdbapi.com/?apikey=320f6ab2&";
 
@@ -37,7 +36,7 @@ class Movies extends Component {
   };
 
   fetchMovies = (searchParams = "s=king") => {
-    axios
+    http
       .get(`${apiEndPoint}${searchParams}`)
       .catch((error) => console.log("There is a error" + error))
       .then((result) => {

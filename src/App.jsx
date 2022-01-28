@@ -8,7 +8,8 @@ export default function App() {
     <div>
       <Switch>
         <Route path="/not-found" component={NotFound} />
-        <Route exact path="/" component={Movies} />
+        <Route path="/movies" component={Movies} />
+        <Redirect from="/" exact to="/movies" />
         <Redirect to="/not-found" />
       </Switch>
     </div>
