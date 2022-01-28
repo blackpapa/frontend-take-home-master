@@ -33,17 +33,23 @@ class Movies extends Component {
       title: "",
       year: "",
     },
+    error: "",
   };
 
   fetchMovies = (searchParams = "s=king") => {
     axios
       .get(`${apiEndPoint}${searchParams}`)
-      .then((response) =>
-        this.setState({
-          movies: response.data.Search,
-        })
-      )
-      .catch((error) => console.log("There is a error" + error));
+      .catch((error) => console.log("There is a error" + error))
+      .then((result) => {
+        if (result.data.Response === "True") {
+          this.setState({
+            movies: result.data.Search,
+          });
+        } else {
+          console.log(result.data.Error);
+          this.setState({ error: result.data.Error });
+        }
+      });
   };
 
   componentDidMount() {
@@ -57,11 +63,14 @@ class Movies extends Component {
   };
 
   handleSearch = () => {
-    console.log(this.state.searchQuery);
+    const originalMovies = this.state.movies;
+    const { title, year } = this.state.searchQuery;
+
+    this.fetchMovies(`s=${title}&y=${year}`);
   };
 
   render() {
-    const { movies, columns, searchQuery } = this.state;
+    const { movies, columns, searchQuery, error } = this.state;
 
     return (
       <div className="row">
@@ -91,7 +100,7 @@ class Movies extends Component {
               Search
             </button>
           </div>
-          <MoviesTable movies={movies} columns={columns} />
+          {error ? error : <MoviesTable movies={movies} columns={columns} />}
         </div>
         <div className="col"></div>
       </div>
