@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import MoviesTable from "./moviesTable";
 
+const apiEndPoint = "http://www.omdbapi.com/?apikey=320f6ab2&";
+
 class Movies extends Component {
   state = {
     movies: [
@@ -33,15 +35,19 @@ class Movies extends Component {
     },
   };
 
-  componentDidMount() {
+  fetchMovies = (searchParams = "s=king") => {
     axios
-      .get("https://www.omdbapi.com/?apikey=320f6ab2&s=king&p=10")
+      .get(`${apiEndPoint}${searchParams}`)
       .then((response) =>
         this.setState({
           movies: response.data.Search,
         })
       )
       .catch((error) => console.log("There is a error" + error));
+  };
+
+  componentDidMount() {
+    this.fetchMovies();
   }
 
   handleChange = (e) => {
