@@ -63,7 +63,7 @@ class Movies extends Component {
   };
 
   handleSearch = () => {
-    const originalMovies = this.state.movies;
+    this.setState({ error: "" });
     const { title, year } = this.state.searchQuery;
 
     this.fetchMovies(`s=${title}&y=${year}`);
@@ -73,10 +73,10 @@ class Movies extends Component {
     const { movies, columns, searchQuery, error } = this.state;
 
     return (
-      <div className="row">
-        <div className="col"></div>
-        <div className="col">
-          <div style={{ margin: 10, alignItems: "center" }}>
+      <React.Fragment>
+        <div className="row">
+          <div className="col"></div>
+          <div className="col-6" style={{ margin: 10, alignItems: "center" }}>
             <label style={{ marginRight: 5 }}>Title</label>
             <input
               type="string"
@@ -100,10 +100,17 @@ class Movies extends Component {
               Search
             </button>
           </div>
-          {error ? error : <MoviesTable movies={movies} columns={columns} />}
+          <div className="col-2"></div>
         </div>
-        <div className="col"></div>
-      </div>
+
+        <div className="row">
+          <div className="col"></div>
+          <div className="col">
+            {error ? error : <MoviesTable movies={movies} columns={columns} />}
+          </div>
+          <div className="col"></div>
+        </div>
+      </React.Fragment>
     );
   }
 }
