@@ -7,7 +7,7 @@ axios.interceptors.response.use(undefined, (error) => {
     error.response.status <= 500;
 
   if (!expectedError) {
-    console.log(error);
+    console.log("Unexpected occured !");
   }
 
   return Promise.reject(error);

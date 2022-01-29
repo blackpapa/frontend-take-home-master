@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MoviesTable from "./moviesTable";
 import http from "../Services/httpService";
+import { Link } from "react-router-dom";
 
 const apiEndPoint = "http://www.omdbapi.com/?apikey=320f6ab2&";
 
@@ -24,7 +25,18 @@ class Movies extends Component {
       },
     ],
     columns: [
-      { path: "title", label: "Title" },
+      {
+        path: "title",
+        label: "Title",
+        content: (movie) => (
+          <Link
+            to={`/movies/${movie._imdbID}`}
+            style={{ textDecoration: "none" }}
+          >
+            {movie.Title}
+          </Link>
+        ),
+      },
       { path: "poster", label: "Poster" },
       { path: "year", label: "Year" },
     ],
