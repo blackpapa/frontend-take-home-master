@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMovie, mapToViewMovie } from "./../Services/movieService";
+import { getMovie } from "./../Services/movieService";
 import { JsonToTable } from "react-json-to-table";
 
 class MovieForm extends Component {
