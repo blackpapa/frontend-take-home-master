@@ -74,7 +74,7 @@ class Movies extends Component {
   };
 
   handleSearch = () => {
-    this.setState({ error: "" });
+    this.setState({ movies: [], error: "" });
     const { title, year } = this.state.searchQuery;
 
     this.fetchMovies(`s=${title}&y=${year}`);
