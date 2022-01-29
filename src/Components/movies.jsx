@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MoviesTable from "./moviesTable";
 import http from "../Services/httpService";
 import { Link } from "react-router-dom";
+import SearchBox from "./searchBox";
 
 const apiEndPoint = "http://www.omdbapi.com/?apikey=320f6ab2&";
 
@@ -88,32 +89,14 @@ class Movies extends Component {
         <div className="row">
           <div className="col"></div>
           <div className="col-6" style={{ margin: 10, alignItems: "center" }}>
-            <label style={{ marginRight: 5 }}>Title</label>
-            <input
-              type="string"
-              name="title"
-              style={{ marginRight: 5 }}
-              value={searchQuery.title}
+            <SearchBox
               onChange={this.handleChange}
+              onSearch={this.handleSearch}
+              searchQuery={searchQuery}
             />
-            <label style={{ marginRight: 5 }}>Year</label>
-            <input
-              type="string"
-              name="year"
-              style={{ marginRight: 5 }}
-              value={searchQuery.year}
-              onChange={this.handleChange}
-            />
-            <button
-              className="btn btn-sm btn-primary"
-              onClick={this.handleSearch}
-            >
-              Search
-            </button>
           </div>
           <div className="col-2"></div>
         </div>
-
         <div className="row">
           <div className="col"></div>
           <div className="col">
