@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { ProgressBar } from "./progressBar";
 import { getMovie } from "./../Services/movieService";
 import { JsonToTable } from "react-json-to-table";
+import { Link } from "react-router-dom";
 
 class MovieForm extends Component {
   state = {
@@ -22,6 +24,9 @@ class MovieForm extends Component {
       <div>
         <h2>The Details of {movieDetails.Title}</h2>
         <JsonToTable json={movieDetails} />
+        <Link to="/">
+          <button className="btn-primary">Back</button>
+        </Link>
       </div>
     );
   }
