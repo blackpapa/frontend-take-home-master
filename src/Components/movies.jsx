@@ -30,7 +30,7 @@ class Movies extends Component {
         label: "Title",
         content: (movie) => (
           <Link
-            to={`/movies/${movie._imdbID}`}
+            to={`/movies/${movie.imdbID}`}
             style={{ textDecoration: "none" }}
           >
             {movie.Title}
