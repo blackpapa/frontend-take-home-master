@@ -28,13 +28,12 @@ class MovieForm extends Component {
           <div className="row">
             <div className="col"></div>
             <div className="col-10">
-              <h2>The Details of {movieDetails.Title}</h2>
+              <h2 style={{ textAlign: "center" }}>
+                The Details of {movieDetails.Title}
+              </h2>
               <JsonToTable json={movieDetails} />
               <Link to="/">
-                <button
-                  style={{ marginLeft: 100, marginTop: 10 }}
-                  className="btn-primary"
-                >
+                <button style={{ marginTop: 10 }} className="btn-primary">
                   Back
                 </button>
               </Link>
