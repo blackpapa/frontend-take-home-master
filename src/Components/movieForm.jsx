@@ -25,12 +25,21 @@ class MovieForm extends Component {
         {!movieDetails ? (
           <ProgressBar />
         ) : (
-          <div>
-            <h2>The Details of {movieDetails.Title}</h2>
-            <JsonToTable json={movieDetails} />
-            <Link to="/">
-              <button className="btn-primary">Back</button>
-            </Link>
+          <div className="row">
+            <div className="col"></div>
+            <div className="col-10">
+              <h2>The Details of {movieDetails.Title}</h2>
+              <JsonToTable json={movieDetails} />
+              <Link to="/">
+                <button
+                  style={{ marginLeft: 100, marginTop: 10 }}
+                  className="btn-primary"
+                >
+                  Back
+                </button>
+              </Link>
+            </div>
+            <div className="col"></div>
           </div>
         )}
       </div>
